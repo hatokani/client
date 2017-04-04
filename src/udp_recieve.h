@@ -15,6 +15,8 @@ class Udp_Recieve {
   int sock;
   struct sockaddr_in addr;
   struct ip_mreq mreq;
+
+protected:
   char buf[2048];
 
 public:
