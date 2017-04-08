@@ -21,7 +21,8 @@ protected:
 
 public:
   Udp_Recieve();
-  void recieve(int port);
+  void recieve(int port, const char destaddr[]);
+  char *get_buf();
 };
 
 #endif
