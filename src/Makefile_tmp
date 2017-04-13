@@ -3,18 +3,20 @@ CFLAGS = -std=c++14 -O2 -Wall -pipe
 TARGET = ../client
 INCLUDE = -I/usr/include -I/home/hatokani/protobuf-2.6.1/src
 SRCDIR = .
-LIBS = $(wildcard $(SRCDIR)/*.h)
+PROTODIR = ./../proto
 OBJDIR = ../obj
 SOURCES = $(wildcard $(SRCDIR)/*.cc)
 OBJECTS = $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cc=.o))) 
+PROTOS = $(wildcard $(PROTDIR)/*.cc)
+OBJPROT = $(addprefix $(OBJDIR)/, $(notdir $(PROTOS:.cc=.o))) 
 OBJS = $(wildcard $(OBJDIR)/*.o)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cc
 	clang-format -i $(SOURCES) $(LIBS)
 	$(COMPILER) $(INCLUDE) $(CFLAGS) -o $@ -c $<
 
-$(TARGET): $(OBJS)
-	$(COMPILER) -o $@ $(OBJS) -lprotobuf
+$(TARGET): $(OBJS) $(PROTOBUF)
+	$(COMPILER) -o $(OBJS) $(PROTOBUF)
 
 clean:
 	-rm -f $(OBJECTS) $(TARGET)

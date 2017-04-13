@@ -1,14 +1,14 @@
 #ifndef UDP_RECIEVE_H
 #define UDP_RECIEVE_H
 
-#include </usr/include/arpa/inet.h>
-#include </usr/include/netinet/in.h>
-#include </usr/include/x86_64-linux-gnu/sys/socket.h>
-#include </usr/include/x86_64-linux-gnu/sys/types.h>
+#include <arpa/inet.h>
 #include <iostream>
+#include <netinet/in.h>
 #include <string.h>
 #include <string>
 #include <unistd.h>
+#include <x86_64-linux-gnu/sys/socket.h>
+#include <x86_64-linux-gnu/sys/types.h>
 
 class Udp_Recieve {
 

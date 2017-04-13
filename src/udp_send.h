@@ -1,15 +1,15 @@
 #ifndef UDP_SEND_H
 #define UDP_SEND_H
 
-#include </usr/include/arpa/inet.h>
-#include </usr/include/netinet/in.h>
-#include </usr/include/x86_64-linux-gnu/sys/socket.h>
-#include </usr/include/x86_64-linux-gnu/sys/types.h>
+#include <arpa/inet.h>
 #include <iostream>
 #include <netdb.h>
+#include <netinet/in.h>
 #include <string.h>
 #include <string>
 #include <unistd.h>
+#include <x86_64-linux-gnu/sys/socket.h>
+#include <x86_64-linux-gnu/sys/types.h>
 
 class Udp_Send {
   int sock;

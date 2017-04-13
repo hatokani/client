@@ -5,7 +5,7 @@ int main() {
   char text[2048] = "dekita!!";
   Udp_Send udp = Udp_Send();
   while (true) {
-    udp.send(12345, "239.192.1.2", text);
+    udp.send(12345, "222.111.1.1", text);
     std::cout << "deteruyo" << std::endl;
   }
 }

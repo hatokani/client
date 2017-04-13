@@ -1,0 +1,34 @@
+COMPILER = clang++
+CFLAGS = -std=c++14 -O2 -Wall -pipe 
+TARGET = ../client
+INCLUDE = -I/usr/include -I/home/hatokani/protobuf-2.6.1/src
+SRCDIR = .
+PROTODIR = ./../proto
+OBJDIR = ../obj
+SOURCES = $(wildcard $(SRCDIR)/*.cc)
+OBJECTS = $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cc=.o))) 
+PROTOS = $(wildcard $(PROTDIR)/*.cc)
+OBJPROT = $(addprefix $(OBJDIR)/, $(notdir $(PROTOS:.cc=.o))) 
+BUFDIR = /home/hatokani/protobuf-2.6.1/src/google/protobuf/stubs
+BUFDIR2 = /home/hatokani/protobuf-2.6.1/src/google/protobuf
+BUFDIR3 = /home/hatokani/protobuf-2.6.1/src/google/protobuf/io
+BUFDIR4 = /home/hatokani/protobuf-2.6.1/src/google/protobuf/compiler
+BUFDIR5 = /home/hatokani/protobuf-2.6.1/src/google/protobuf/testdata
+BUFDIR6 = /home/hatokani/protobuf-2.6.1/src/google/protobuf/testing
+PROTOBUF1 = $(wildcard $(BUFDIR)/*.o)
+PROTOBUF2 = $(wildcard $(BUFDIR2)/*.o)
+PROTOBUF3 = $(wildcard $(BUFDIR3)/*.o)
+PROTOBUF4 = $(wildcard $(BUFDIR4)/*.o)
+PROTOBUF5 = $(wildcard $(BUFDIR5)/*.o)
+PROTOBUF6 = $(wildcard $(BUFDIR6)/*.o)
+OBJS = $(wildcard $(OBJDIR)/*.o)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cc
+	clang-format -i $(SOURCES) $(LIBS)
+	$(COMPILER) $(INCLUDE) $(CFLAGS) -o $@ -c $<
+
+$(TARGET) : $(OBJS) $(PROTOBUF) $(PROTOBUF2) $(PROTOBUF3) $(PROTOBUF4) $(PROTOBUF5) $(PROTOBUF6)
+	$(COMPILER) -o $@  $(OBJS) $(PROTOBUF) $(PROTOBUF2) $(PROTOBUF3) $(PROTOBUF4) $(PROTOBUF5) $(PROTOBUF6)
+
+clean:
+	-rm -f $(OBJECTS) $(TARGET)
