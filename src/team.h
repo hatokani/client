@@ -17,6 +17,7 @@ class Team {
 
 public:
   Team(std::string color_, int goaly_);
+  Team();
   std::string get_color() const;
   int get_goalx() const;
   int get_goaly() const;

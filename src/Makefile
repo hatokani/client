@@ -10,10 +10,10 @@ OBJECTS = $(addprefix $(OBJDIR)/, $(notdir $(SOURCES:.cc=.o)))
 OBJS = $(wildcard $(OBJDIR)/*.o)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cc
-	clang-format -i $(SOURCES) $(LIBS)
+	clang-format -i $< $(LIBS)
 	$(COMPILER) $(INCLUDE) $(CFLAGS) -o $@ -c $<
 
-$(TARGET): $(OBJS)
+$(TARGET): $(OBJECTS)
 	$(COMPILER) -o $@ $(OBJS) -lprotobuf
 
 clean:

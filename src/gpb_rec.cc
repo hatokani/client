@@ -6,14 +6,14 @@ Gpb_Rec::Gpb_Rec() {
 }
 
 SSL_WrapperPacket Gpb_Rec::get_packet() {
-  recieve(10002);
+  recieve(10002, "224.5.23.1");
   if (packet->ParseFromArray(this->buf, sizeof(this->buf)))
     std::cout << "visioin parse erorr" << std::endl;
   return *packet;
 }
 
 SSL_Referee Gpb_Rec::get_referee() {
-  recieve(10003);
+  recieve(10003, "224.5.23.1");
   if (referee->ParseFromArray(this->buf, sizeof(buf)))
     std::cout << "referee parse error" << std::endl;
   return *referee;

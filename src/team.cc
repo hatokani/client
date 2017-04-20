@@ -14,6 +14,8 @@ Team::Team(std::string color_, int goaly_) : color(color_), goaly(goaly_) {
   }
 }
 
+Team::Team() {}
+
 std::string Team::get_color() const { return color; }
 int Team::get_goalx() const { return goalx; }
 int Team::get_goaly() const { return goaly; }
